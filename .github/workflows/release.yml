@@ -66,18 +66,13 @@ jobs:
           fi
           echo "Release $TAG 尚不存在，可以继续。"
 
-      - name: 生成 webui.bz2（如需要）
-        run: |
-          set -euo pipefail
-          if [ -d webui ] && [ ! -f webui.bz2 ]; then
-            tar -cjf webui.bz2 -C webui/ .
-            echo "已由 webui/ 生成 webui.bz2"
-          fi
-
       - name: 构建 Deb 包
         run: |
           set -euo pipefail
           PLATFORM="${{ github.event.inputs.platform || 'x86_64' }}"
+          # 必须先删掉可能存在的旧 webui.bz2，否则 build.sh 会认为无需重建，
+          # 把占位页或上一版前端打进包里
+          rm -f webui.bz2
           chmod +x build.sh
           ./build.sh "$PLATFORM"
 
