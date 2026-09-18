@@ -35,8 +35,8 @@ if [ -d webui ] && [ ! -f webui.bz2 ]; then
     tar -cjf webui.bz2 -C webui/ .
 fi
 
-if python3 -c "import json,sys;c=json.load(open('config.ini'));sys.exit(0 if ('type' in c or c.get('open_path')) else 1)"; then
-    [ -f webui.bz2 ] || { echo "ERROR: WebUI 应用必须提供 webui.bz2"; exit 1; }
+if python3 -c "import json,sys;c=json.load(open('config.ini'));sys.exit(0 if c.get('type')=='iframe' else 1)"; then
+    [ -f webui.bz2 ] || { echo "ERROR: 内嵌(iframe)应用必须提供 webui.bz2"; exit 1; }
 fi
 
 # 检查占位符

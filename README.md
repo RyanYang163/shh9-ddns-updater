@@ -3,7 +3,7 @@
 | 项 | 值 |
 |---|---|
 | 应用 ID | `shh9-ddns-updater` |
-| 形态 | Deb 应用（单包模式） · WebUI 内嵌（iframe） |
+| 形态 | Deb 应用（单包模式） · WebUI 外开（浏览器新标签） |
 | 版本 | 1.0.0 |
 | 上游项目 | https://github.com/qdm12/ddns-updater |
 | 上游许可证 | MIT |
