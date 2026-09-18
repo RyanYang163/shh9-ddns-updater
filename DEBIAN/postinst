@@ -1,0 +1,27 @@
+#!/bin/bash
+# 指引 13.1/H12：生命周期脚本内禁止 apt/pip/curl 等网络操作
+set -e
+APPID="shh9-ddns-updater"
+USERNAME="shh9ddnsupdater"
+APP_DIR="/usr/local/${APPID}"
+
+# 创建专用非 root 用户（V1：应用不得以 root 运行）
+if ! id -u "${USERNAME}" > /dev/null 2>&1; then
+    useradd --system --no-create-home --shell /usr/sbin/nologin "${USERNAME}"
+fi
+
+mkdir -p "/var/lib/${APPID}" "/var/log/${APPID}"
+chown -R "${USERNAME}:${USERNAME}" "/var/lib/${APPID}" "/var/log/${APPID}"
+chown -R "${USERNAME}:${USERNAME}" "${APP_DIR}"
+
+# 解压前端产物（若随包提供）
+if [ -f "${APP_DIR}/webui.bz2" ]; then
+    mkdir -p "${APP_DIR}/webui"
+    tar -xjf "${APP_DIR}/webui.bz2" -C "${APP_DIR}/webui"
+    chown -R "${USERNAME}:${USERNAME}" "${APP_DIR}/webui"
+fi
+
+systemctl daemon-reload
+systemctl enable "${APPID}.service" || true
+systemctl start "${APPID}.service" || true
+exit 0

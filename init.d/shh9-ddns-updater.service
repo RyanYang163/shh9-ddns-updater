@@ -1,0 +1,38 @@
+[Unit]
+Description=DDNS Updater (TOS 7)
+After=network.target
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+User=shh9ddnsupdater
+Group=shh9ddnsupdater
+WorkingDirectory=/usr/local/shh9-ddns-updater
+ExecStart=/usr/local/shh9-ddns-updater/bin/shh9-ddns-updater
+EnvironmentFile=-/usr/local/shh9-ddns-updater/shh9-ddns-updater.env
+TimeoutStartSec=30
+TimeoutStopSec=10
+
+# ---- 安全加固（指引 13.8 必需项，缺一不可）----
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RemoveIPC=true
+SystemCallArchitectures=native
+
+# ---- 可写路径（ProtectSystem=strict 下必须显式放开）----
+ReadWritePaths=/usr/local/shh9-ddns-updater /var/lib/shh9-ddns-updater /var/log/shh9-ddns-updater
+
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

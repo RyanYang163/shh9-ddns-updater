@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+APPID="shh9-ddns-updater"
+USERNAME="shh9ddnsupdater"
+
+systemctl daemon-reload
+
+# 仅 purge 时清理；普通卸载保留用户数据（避免 H6「卸载后残留」与数据丢失两头踩）
+if [ "$1" = "purge" ]; then
+    rm -rf "/var/lib/${APPID}" "/var/log/${APPID}" "/usr/local/${APPID}"
+    rm -f  "/etc/systemd/system/${APPID}.service"
+    if id -u "${USERNAME}" > /dev/null 2>&1; then
+        userdel "${USERNAME}" 2>/dev/null || true
+    fi
+    systemctl daemon-reload || true
+fi
+
+exit 0

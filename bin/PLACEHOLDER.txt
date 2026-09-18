@@ -1,0 +1,2 @@
+把 DDNS Updater 的可执行产物放到本目录，并删除本文件。
+上游：https://github.com/qdm12/ddns-updater

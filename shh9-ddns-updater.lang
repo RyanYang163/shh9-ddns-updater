@@ -1,0 +1,97 @@
+[en-us]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[zh-cn]
+name = "DDNS Updater"
+auth = "shh"
+descript = "动态域名解析客户端：定时把本机公网 IP 更新到 DNS 服务商，支持数十家服务商。"
+release_note = "1. 首次发布。"
+important = "需要 TOS 7.0 或更高版本。"
+
+[zh-hk]
+name = "DDNS Updater"
+auth = "shh"
+descript = "动态域名解析客户端：定时把本机公网 IP 更新到 DNS 服务商，支持数十家服务商。"
+release_note = "1. 首次發佈。"
+important = "需要 TOS 7.0 或更高版本。"
+
+[fr-fr]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[de-de]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[it-it]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[es-es]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[hu-hu]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[ja-jp]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[ko-kr]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[pl-pl]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[ru-ru]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[tr-tr]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."
+
+[pt-pt]
+name = "DDNS Updater"
+auth = "shh"
+descript = "Periodically updates DNS records with your current public IP across many DNS providers."
+release_note = "1. Initial release."
+important = "Requires TOS 7.0 or later."

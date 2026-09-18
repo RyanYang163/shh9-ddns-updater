@@ -1,0 +1,9 @@
+Package: shh9-ddns-updater
+Version: 1.0.0
+Architecture: amd64
+Section: utils
+Priority: optional
+Maintainer: shh <shh@users.noreply.github.com>
+Depends: systemd, nginx
+Description: DDNS Updater
+ Periodically updates DNS records with your current public IP across many DNS providers.
