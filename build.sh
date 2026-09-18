@@ -56,7 +56,18 @@ cp config.ini "${APPID}.lang" "${STAGING}/usr/local/${APPID}/"
 [ -d init.d ]         && cp -r init.d      "${STAGING}/usr/local/${APPID}/"
 [ -d nginx ]          && cp -r nginx       "${STAGING}/usr/local/${APPID}/"
 [ -d depends ]        && cp -r depends     "${STAGING}/usr/local/${APPID}/"
-if [ -d bin ]; then cp -r bin/* "${STAGING}/usr/local/${APPID}/bin/"; chmod +x "${STAGING}/usr/local/${APPID}/bin/"* 2>/dev/null || true; fi
+if [ -d bin ]; then
+    # 按目标架构挑选二进制：bin/<appid>-<platform>
+    BIN_SRC="bin/${APPID}-${PLATFORM}"
+    if [ -f "$BIN_SRC" ]; then
+        cp "$BIN_SRC" "${STAGING}/usr/local/${APPID}/bin/${APPID}"
+        chmod +x "${STAGING}/usr/local/${APPID}/bin/${APPID}"
+        echo "  已放入二进制：${BIN_SRC}"
+    else
+        cp -r bin/* "${STAGING}/usr/local/${APPID}/bin/" 2>/dev/null || true
+        chmod +x "${STAGING}/usr/local/${APPID}/bin/"* 2>/dev/null || true
+    fi
+fi
 
 sed "s/^Architecture:.*$/Architecture: ${DPKG_ARCH}/" DEBIAN/control > "${STAGING}/DEBIAN/control"
 cp DEBIAN/postinst DEBIAN/prerm DEBIAN/postrm "${STAGING}/DEBIAN/"
