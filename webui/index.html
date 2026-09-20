@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DDNS Updater</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+         margin: 0; display: grid; place-items: center; min-height: 100vh;
+         background: #f4f6f5; color: #16211f; }
+  .box { max-width: 32rem; padding: 2rem; text-align: center; }
+  a { color: #12796b; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <p>DDNS Updater 的界面由应用自身提供，正在跳转…</p>
+    <p><a id="l" href="#">如果没有自动跳转，请点这里</a></p>
+  </div>
+  <script>
+    // 跳到应用自身监听的端口（界面由 ddns-updater 二进制提供）
+    var url = location.protocol + "//" + location.hostname + ":18809/";
+    document.getElementById("l").href = url;
+    location.replace(url);
+  </script>
+</body>
+</html>
