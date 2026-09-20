@@ -1,5 +1,5 @@
 Package: shh9-ddns-updater
-Version: 1.0.3
+Version: 1.0.4
 Architecture: amd64
 Section: utils
 Priority: optional
