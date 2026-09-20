@@ -1,0 +1,9 @@
+{
+  "name": "DDNS Updater",
+  "license": "MIT",
+  "port": 18809,
+  "license_url": "https://raw.githubusercontent.com/qdm12/ddns-updater/main/LICENSE",
+  "en": "Periodically updates DNS records with your current public IP across many DNS providers.",
+  "features": "- Supports dozens of DNS providers (Cloudflare, DNSPod, DuckDNS, Route53, ...)\n- Periodic public-IP detection and record update\n- Web UI for configuration and status\n- Single static binary, zero dependencies",
+  "date": "2026-09-20"
+}

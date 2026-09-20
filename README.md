@@ -1,45 +1,76 @@
 # DDNS Updater
 
-| 项 | 值 |
+> TOS 7 application package for **DDNS Updater** — platform integration only.
+> The application itself is provided by the upstream project, unmodified.
+
+## Overview
+
+Periodically updates DNS records with your current public IP across many DNS providers.
+
+上游项目 / Upstream: <https://github.com/qdm12/ddns-updater>
+上游许可证 / License: **MIT**
+
+## Features
+
+- Supports dozens of DNS providers (Cloudflare, DNSPod, DuckDNS, Route53, ...)
+- Periodic public-IP detection and record update
+- Web UI for configuration and status
+- Single static binary, zero dependencies
+
+## Installation
+
+1. Requirements: TOS 7.0+ and systemd + nginx
+2. Install from the TOS App Center
+3. Open the app and complete initial configuration
+
+## Usage
+
+1. Access URL: `http://${ip}:18809`
+2. Default credentials: see upstream documentation
+3. Key settings: see upstream documentation
+
+## Permissions
+
+| Permission | Rationale |
 |---|---|
-| 应用 ID | `shh9-ddns-updater` |
-| 形态 | Deb 应用（单包模式） · WebUI 外开（浏览器新标签） |
-| 版本 | 1.0.0 |
-| 上游项目 | https://github.com/qdm12/ddns-updater |
-| 上游许可证 | MIT |
-| 宿主端口 | 18809 |
+| Network: port 18809 | Web UI access |
+| File system: `/Volume*/DockerAppData/shh9-ddns-updater/` | Application data persistence |
+| User: shh9ddnsupdater | Isolated non-root service execution |
 
-## 简介
+## Configuration
 
-动态域名解析客户端：定时把本机公网 IP 更新到 DNS 服务商，支持数十家服务商。
+See `config.ini` for platform metadata; see `docker-compose.yml` for runtime configuration.
 
-## 打包
+## Ports
 
-```bash
-./build.sh                # 默认 x86_64
-./build.sh aarch64        # ARM（Deb 应用）
-```
+| Port | Protocol | Purpose |
+|---|---|---|
+| 18809 | TCP | Web UI (DDNS Updater) |
 
-产物在 `build/output/`，同级生成 `<包名>.sha256`。
+## Support
 
-## 提交前必办事项
+- Documentation: https://github.com/qdm12/ddns-updater
+- Issue tracker: https://github.com/qdm12/ddns-updater/issues
+- Community: https://github.com/qdm12/ddns-updater
 
-- 上游提供 **zero-dependency 的 Go 静态二进制**，是 9 个应用中最适合 Deb 单包形态的一个。
-- 把 x86_64 / aarch64 的二进制放进 bin/ 即可，无需任何运行时。
-- ⚠️ 首次启动前必须在 WebUI 中配置至少一个 DNS provider，否则服务空转。
-- [ ] 真机安装、启动、停止、卸载残留四项实测
-- [ ] 首屏加载 ≤ 5 秒（指引 H10）
-- [ ] x86_64 与 aarch64 分别构建并测试（指引 H7）
-- [ ] 提交前跑一遍指引 13.9 上架前自查清单
+## Security & Compliance
 
-## 隐私政策
+- **License**: MIT — full text in [`LICENSE`](./LICENSE)
+- **Attribution**: see [`NOTICE`](./NOTICE)
+- **Privacy Policy**: see [`PRIVACY.md`](./PRIVACY.md)
+- **Vulnerability scan**: `trivy-report.txt` attached to each Release (HIGH/CRITICAL must be 0)
+- Runs as a non-root dedicated user; no privileged mode, no host network
 
-见 [PRIVACY.md](./PRIVACY.md)（对应审核项 C3–C8）。
+## Changelog
 
-## 许可证与出处
+### v1.0.2 (2026-09-20)
+- Compliance update: added LICENSE / NOTICE / PRIVACY materials,
+  declared upstream license inside the package, added container healthcheck
 
-本仓库**仅包含 TOS 平台集成所需的配置文件与打包脚本**，应用本体的源码与二进制来自上游项目：https://github.com/qdm12/ddns-updater
+### v1.0.0
+- Initial release
 
-上游许可证：**%s**。本封装保留上游许可证声明，未修改上游代码（Deb 形态下按上游许可证要求随包提供 LICENSE）。
+## License
 
-应用名称与图标为上游项目的标识；本仓库图标为自行绘制的简易图形，不含上游商标元素（对应审核项 H19）。
+**MIT** — this packaging repository is distributed under the same license as the
+upstream project. Full text: [`LICENSE`](./LICENSE).
