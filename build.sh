@@ -51,6 +51,17 @@ mkdir -p "${STAGING}/usr/local/${APPID}/bin" "${STAGING}/DEBIAN" "$OUT"
 
 cp config.ini "${APPID}.lang" "${STAGING}/usr/local/${APPID}/"
 [ -f "${APPID}.env" ] && cp "${APPID}.env" "${STAGING}/usr/local/${APPID}/"
+# 合规材料必须随包分发（审核项 C2/C3）：许可证全文、署名、隐私政策
+MISSING=""
+for f in LICENSE NOTICE PRIVACY.md; do
+    if [ -f "$f" ]; then
+        cp "$f" "${STAGING}/usr/local/${APPID}/"
+    else
+        MISSING="$MISSING $f"
+    fi
+done
+[ -n "$MISSING" ] && { echo "ERROR: 缺少合规文件:$MISSING（审核项 C2/C3 会失败）"; exit 1; }
+echo "  合规材料已入包: LICENSE NOTICE PRIVACY.md"
 [ -f webui.bz2 ]      && cp webui.bz2      "${STAGING}/usr/local/${APPID}/"
 [ -d images ]         && cp -r images      "${STAGING}/usr/local/${APPID}/"
 [ -d init.d ]         && cp -r init.d      "${STAGING}/usr/local/${APPID}/"

@@ -29,8 +29,8 @@ LockPersonality=true
 RemoveIPC=true
 SystemCallArchitectures=native
 
-# ---- 可写路径（ProtectSystem=strict 下必须显式放开）----
-ReadWritePaths=/usr/local/shh9-ddns-updater /var/lib/shh9-ddns-updater /var/log/shh9-ddns-updater
+ReadWritePaths=/usr/local/shh9-ddns-updater /var/lib/shh9-ddns-updater
+LogsDirectory=shh9-ddns-updater
 
 LimitNOFILE=65536
 
